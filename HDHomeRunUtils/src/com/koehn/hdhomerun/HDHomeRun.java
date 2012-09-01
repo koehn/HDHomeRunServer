@@ -14,8 +14,8 @@ public class HDHomeRun {
 			List<Channel> channels = channelInfoFetcher
 					.getChannels(deviceId, 1);
 
-			TreeMap<Integer, Channel> channelsByUserChannelNumber = new TreeMap<Integer, Channel>();
-			TreeMap<String, Channel> channelsByLabel = new TreeMap<String, Channel>(Collator.getInstance());
+			TreeMap<Integer, Channel> channelsByUserChannelNumber = new TreeMap<>();
+			TreeMap<String, Channel> channelsByLabel = new TreeMap<>(Collator.getInstance());
 
 			for (Channel channel : channels) {
 				channelsByUserChannelNumber.put(channel.getUserChannel(),

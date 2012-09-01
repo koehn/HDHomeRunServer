@@ -16,7 +16,7 @@ public class ConfigRunner {
 			System.arraycopy(commands, 0, allCommands, 1, commands.length);
 			allCommands[0] = "hdhomerun_config";
 
-			//			dumpCommand(allCommands);
+			// dumpCommand(allCommands);
 
 			Process process = Runtime.getRuntime().exec(allCommands);
 			return process;
@@ -39,7 +39,7 @@ public class ConfigRunner {
 	public static List<String> discover() {
 		Process process = run("discover");
 		List<String> lines = readProcessOutput(process);
-		List<String> deviceIds = new ArrayList<String>(lines.size());
+		List<String> deviceIds = new ArrayList<>(lines.size());
 		for (String line : lines) {
 			Matcher m = DISCOVER_PATTERN.matcher(line);
 			if (m.matches()) {
@@ -64,7 +64,7 @@ public class ConfigRunner {
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
 					process.getInputStream()));
-			List<String> results = new ArrayList<String>();
+			List<String> results = new ArrayList<>();
 			String line;
 			line = reader.readLine();
 			while (line != null) {
@@ -105,14 +105,14 @@ public class ConfigRunner {
 		Process process = run(deviceId, "get", tunerNumber(tuner)
 				+ "/streaminfo");
 		List<String> lines = readProcessOutput(process);
-		List<Channel> channels = new ArrayList<Channel>(lines.size());
+		List<Channel> channels = new ArrayList<>(lines.size());
 		for (String line : lines) {
 			Matcher m = CHANNEL_PATTERN.matcher(line);
 			if (m.matches()) {
-				int programNumber = Integer.parseInt(m.group(1));
 				int userChannel = Integer.parseInt(m.group(2));
-				String label = m.group(3);
 				if (userChannel != 0) {
+					int programNumber = Integer.parseInt(m.group(1));
+					String label = m.group(3);
 					Channel channel = new Channel();
 					channel.setChannel(channelNumber);
 					channel.setProgram(programNumber);
