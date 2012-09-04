@@ -16,7 +16,7 @@ public class ConfigRunner {
 			System.arraycopy(commands, 0, allCommands, 1, commands.length);
 			allCommands[0] = "hdhomerun_config";
 
-			// dumpCommand(allCommands);
+			dumpCommand(allCommands);
 
 			Process process = Runtime.getRuntime().exec(allCommands);
 			return process;
