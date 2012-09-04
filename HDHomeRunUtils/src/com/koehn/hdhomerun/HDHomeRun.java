@@ -82,8 +82,7 @@ public class HDHomeRun {
 		}
 		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
 				new FileOutputStream(file)));
-		writer.write("hdhomerun://" + deviceId + "-" + tuner + "/"
-				+ channel.getUserChannel() + " " + channel.getLabel()
+		writer.write("hdhomerun://" + deviceId + "-" + tuner + "/tuner" + tuner
 				+ "?channel=auto:" + channel.getChannel() + "&program="
 				+ channel.getProgram());
 		writer.close();
